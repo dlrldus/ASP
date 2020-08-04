@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="fnq.aspx.cs" Inherits="fnq" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="Site.master" AutoEventWireup="true" CodeFile="fnq.aspx.cs" Inherits="fnq" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="LeftContent" Runat="Server">
-</asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
 
     <div class="container">

@@ -1,8 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="request.aspx.cs" Inherits="request" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="Site.master" AutoEventWireup="true" CodeFile="request.aspx.cs" Inherits="request" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="LeftContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" Runat="Server">
 
