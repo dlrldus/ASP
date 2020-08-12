@@ -52,7 +52,7 @@ MainContainer {
     color: white;
     display: block;
     width: 200px;
-    height: 65px;
+    /*height: 65px;*/
     text-align: center;
     font-size: 12pt;
     font-weight: bold;
@@ -69,6 +69,7 @@ MainContainer {
 #kk1:link {
     text-decoration: none;
 }
+
 #header_width{
     width:100%;
     height:330px;
@@ -114,7 +115,7 @@ MainContainer {
     height: 300px;
     border: 1px solid #6d635b;
     opacity: 0.7;
-    margin: 10px 10px 15px 10px;
+    /*margin: 10px 10px 15px 10px;*/
 }
 
 #section_login_div {
@@ -1064,8 +1065,8 @@ pre code {
 .col-xl-auto {
   position: relative;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  /*padding-right: 15px;
+  padding-left: 15px;*/
 }
 
 .col {

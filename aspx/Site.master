@@ -20,12 +20,33 @@
 <body>
     <form id="form1" runat="server">
         <header>
-            <div id="header_width">
-                <asp:ImageButton ID="ImageButton1" ImageUrl="Images/logo_header.png" OnClick="Btn_Click" Width="100%" Height="330px" runat="server" />
+            <div class="row">       <%--row를 선언 후 col를 이용하여 여백을 나타낸다. --%>
+                <div class="col-md-2"></div>    <%--총 12개의 md중 2개의 크기를 가장 왼쪽에 부여(2개의 크기만큼 여백) --%>
+                <div class="col-md-8">          <%--총 12개의 md중 8개의 크기를 로고 사용에 지정 --%>
+                 <div id="header_width" >
+                      <asp:ImageButton ID="ImageButton1" ImageUrl="Images/logo_header.png" OnClick="Btn_Click" Width="100%" Height="330px" runat="server" />
+                 </div>
+                </div>
+                <div class="col-md-2"></div>    <%--총 12개의 md중 2개의 크기를 가장 오른쪽에 부여(2개의 크기만큼 여백) --%>
             </div>
         </header>
-        <%-- 네비게이션 부분 --%>
-        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
+        <%-- 네비게이션 부분 --%>        
+        <div class="row">            
+            <div class="col-md-2"></div>
+                <nav class="navbar navbar-expand-lg bg-secondary navbar-dark col-md-8">
+                    <ul class="navbar-nav navbar-dark">
+                        <li class="nav-item py-lg-1 active"> <a id=kk1 class="nav-link" href="sell.aspx">판매하기</a></li>
+                        <li class="nav-item py-lg-1 active"> <a id=kk1 class="nav-link" href="sellpost.aspx">구매하기</a></li>
+                        <li class="nav-item py-lg-1 active"> <a id=kk1 class="nav-link" href="request_Board.aspx">요청게시판</a></li>
+                        <li class="nav-item py-lg-1 active"> <a id=kk1 class="nav-link" href="fnq.aspx">QnA</a></li>
+                        <li class="nav-item py-lg-1 active"> <a id=kk1 class="nav-link" href="#">신고게시판</a></li>
+                    </ul>
+                </nav>
+       
+        <div class="col-md-2"></div>
+        </div>
+
+        <%--<nav class="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
             <div class="container">
                 <div class="navbar-header float-left">
                     <ul class="navbar-nav ml-auto ">
@@ -36,17 +57,18 @@
                         <li class="nav-item mx-0 mx-lg-1"><a id="kk1" class="nav-link py-3 px-5 px-lg-5" href="#contact">신고게시판</a></li>
                         <%--<li class="nav-item mx-0 mx-lg-1"><a id="kk1" class="nav-link py-3 px-5 px-lg-5" href="#contact">마이페이지</a></li>--%>
                         <%--<li class="nav-item mx-0 mx-lg-1"><a id="kk1" class="nav-link py-3 px-5 px-lg-5" href="signup.aspx">회원가입</a></li>--%>
-                    </ul>
+                    <%--</ul>
                 </div>
             </div>
-        </nav>
+        </nav>--%>
+
+
 
         <%--왼쪽 로그인 부분 --%>
         <div class="row py-3">
-            <div class="col-md-2 offset-sm-1 ">
+            <div class="col-md-2"></div>            
                 <%--로그인박스--%>
-                <div class="aside">
-                    <section id="section_login">
+                <div class="aside col-md-2">        <%--총 12개의 md중 2개의 크기를 aside에 부여 --%>
                         <div id="section_login_div">
                             <%--로그인 관련 텍스트 박스 , 버튼--%>
                             <asp:TextBox ID="Login_ID" runat="server" TextMode="SingleLine" placeholder="ID" MaxLength="15" CssClass="section_login_textbox"></asp:TextBox>
@@ -77,31 +99,40 @@
                         <asp:Button runat="server" Text="검색" CssClass="section_search_button" OnClick="Search_Click" />
                         <asp:Label runat="server" ID="testTitle"></asp:Label>
                     </section>--%>
-                </div>
-            </div>
+               </div>
+            
             <%--오른쪽 메인 부분 --%>
-            <div class="col-sm-9">
+            <div class="col-md-6">  <%--총 12개의 md중 6개의 크기를 메인에 부여 --%>
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
+
+            <div class="col-md-2"></div>
         </div>
         <footer>
-            <div id="footer_div">
-                <asp:Image runat="server" ImageUrl="icon/footer로고.png" Width="350px" Height="180px" CssClass="footer_img"/>
+            <div class="row">
+            <div class="col-md-2"></div>
+            <div id="footer_div" class="col-md-8">
+                <asp:Image runat="server" ImageUrl="images/footer로고.png" Width="350px" Height="180px" CssClass="footer_img"/>
                 <div id="footer_Hyp">
                     <asp:HyperLink ID="siteinfo" runat="server" NavigateUrl="#"> 사이트소개 l </asp:HyperLink>
                     <asp:HyperLink ID="terms" runat="server" NavigateUrl="#"> 이용약관 l </asp:HyperLink>
                     <asp:HyperLink ID="privacy" runat="server" NavigateUrl="#"> 개인정보취급방침 l </asp:HyperLink>
                     <asp:HyperLink ID="serviceCenter" runat="server" NavigateUrl="#"> 고객센터 l </asp:HyperLink><br />
                     <asp:Label runat="server" Text="Copyright @ 2020 유한대학교 IT소프트웨어공학과 5조 - ASP.NET 팀 프로젝트"></asp:Label>
-                </div>
-                
+                </div>              
+            </div>
+            <div class="col-md-2"></div>
             </div>
         </footer>
+
+
         <script src="Scripts/jquery-3.0.0.js"></script>
         <script src="Scripts/bootstrap.js"></script>
+
         <asp:ContentPlaceHolder ID="FooterContent" runat="server">
         </asp:ContentPlaceHolder>
+
     </form>
 </body>
 </html>
