@@ -36,10 +36,10 @@ public partial class sell : System.Web.UI.Page
         MySqlConnection connection = new MySqlConnection("Server=ec2-13-125-252-165.ap-northeast-2.compute.amazonaws.com;Database=2020Project;Uid=root;Pwd=qwer1234;");
         connection.Open();
         string InsertQuery = "INSERT INTO sellpost (name,email,title,contents,writedate,readcount,image,price) values(@name,@email,@title,@contents,@writedate,0,@image,@price)";
-        string InsertQuery2 = "Insert Into reply (postnumber) Values (0)";
+        //string InsertQuery2 = "Insert Into reply (postnumber) Values (0)";
 
         MySqlCommand cmd = new MySqlCommand(InsertQuery, connection);
-        MySqlCommand cmd2 = new MySqlCommand(InsertQuery2, connection);
+        //MySqlCommand cmd2 = new MySqlCommand(InsertQuery2, connection);
         cmd.Parameters.AddWithValue("@name", name.Text);
         cmd.Parameters.AddWithValue("@email", email.Text);
         cmd.Parameters.AddWithValue("@title", title.Text);
@@ -49,7 +49,7 @@ public partial class sell : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@image", ImageUpload.FileName);
 
         cmd.ExecuteNonQuery();
-        cmd2.ExecuteNonQuery();
+        //cmd2.ExecuteNonQuery();
 
         connection.Close();
         Response.Redirect("~/ASP_Project2/Main.aspx");
