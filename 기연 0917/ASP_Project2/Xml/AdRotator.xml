@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<advertisement>
+  <Ad>
+    <ImageUrl>images/step1.png</ImageUrl>
+    <navigateUrl>http://www.naver.com/</navigateUrl>
+    <AlternateText>네이버</AlternateText>
+    <Keyword>네이버</Keyword>
+    <Impressions>25</Impressions>
+  </Ad>
+</advertisement>
