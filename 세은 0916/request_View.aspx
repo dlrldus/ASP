@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:HiddenField runat="server" ID="post_num" />
-    <div id="View_Container">
+    <div id="req_View_Container">
         <div id="top_Btn">
             <%--상단 수정,삭제 버튼--%>
             <asp:Button ID="Button3" runat="server" Text="삭제" CssClass="View_BtnD" />
@@ -16,20 +16,20 @@
         <%--<div id="View_header"> --%>  
             <%--제목--%>
           <asp:TableRow runat="server">
-              <asp:TableCell runat="server" CssClass="column_text"><asp:Label runat="server" Text="제목" CssClass="label_text"></asp:Label></asp:TableCell>
-              <asp:TableCell runat="server" ColumnSpan="3"><asp:TextBox ID="title" runat="server" CssClass="title_textbox" ReadOnly="true"></asp:TextBox></asp:TableCell>
+              <asp:TableCell runat="server" CssClass="column_text"><asp:Label runat="server" Text="제목" CssClass="request_label_text"></asp:Label></asp:TableCell>
+              <asp:TableCell runat="server" ColumnSpan="3"><asp:TextBox ID="title" runat="server" CssClass="request_title_textbox" ReadOnly="true"></asp:TextBox></asp:TableCell>
          </asp:TableRow>
             <%--작성자 작성일 조회수 --%>
           <asp:TableRow runat="server">
-              <asp:TableCell runat="server" CssClass="column_text"><asp:Label runat="server" Text="작성자" CssClass="label_text"></asp:Label></asp:TableCell>
+              <asp:TableCell runat="server" CssClass="column_text"><asp:Label runat="server" Text="작성자" CssClass="request_label_text"></asp:Label></asp:TableCell>
               <asp:TableCell runat="server" ColumnSpan="3"><asp:Label ID="nickname" runat="server" Text="" CssClass="content_text"></asp:Label></asp:TableCell>
          </asp:TableRow>
 
           <asp:TableRow runat="server">
-            <asp:TableCell runat="server" CssClass="column_text"><asp:Label ID="lblDate" runat="server" Text="작성일" CssClass="label_text"></asp:Label></asp:TableCell>
+            <asp:TableCell runat="server" CssClass="column_text"><asp:Label ID="lblDate" runat="server" Text="작성일" CssClass="request_label_text"></asp:Label></asp:TableCell>
             <asp:TableCell runat="server"><asp:Label ID="writeday" runat="server" Text="" CssClass="content_text"></asp:Label></asp:TableCell>
 
-           <asp:TableCell runat="server" CssClass="column_text"><asp:Label ID="lblCount" runat="server" Text="조회수" CssClass="label_text"></asp:Label></asp:TableCell>
+           <asp:TableCell runat="server" CssClass="column_text"><asp:Label ID="lblCount" runat="server" Text="조회수" CssClass="request_label_text"></asp:Label></asp:TableCell>
            <asp:TableCell runat="server"><asp:Label ID="readcount" runat="server" Text="" CssClass="content_text"></asp:Label></asp:TableCell>
         </asp:TableRow>
             <%--</div>--%>

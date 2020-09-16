@@ -186,9 +186,8 @@ MainContainer {
 }
 
 .section_search_textbox {
-    position: relative;
     height: 35px;
-    font-size: 12pt;
+    font-size: 10.5pt;
     border: 1px solid #808080;
     width: 75%;
 }
@@ -217,7 +216,7 @@ MainContainer {
     width: 80%;
     height: 1450px;
     vertical-align: middle;
-    /*border: 2px double #6c757d;*/
+    border: 2px double #6c757d;
     padding: 30px 30px 30px 30px;
 }
 
@@ -255,117 +254,19 @@ MainContainer {
     width: 100%;
 }
 
-#View_Btn_loc_view {
-    float: right;
-    width: 100%;
-}
-
 .View_Btn {
-    border-radius: 5px;
-    margin: 15px 45px 0px 0px;
-    display: block;
-    font-size: 14pt;
-    color: #ffffff;
-    background-color: #3c55e6;
-    outline: 0;
-    border: 1px solid #808080;
-    width: 15%;
-    height: 50px;
-    float: right;
-}
-
-    .View_Btn:hover {
-        color: #ffffff;
-        background-color: #0019ad;
-        outline: 0;
-        border: 1px solid #808080;
-    }
-
-.View_BtnC {
-    border-radius: 5px;
-    margin: 15px 45px 0px 0px;
-    display: block;
-    font-size: 14pt;
-    color: #ffffff;
-    background-color: #ff0000;
-    outline: 0;
-    border: 1px solid #808080;
-    width: 15%;
-    height: 50px;
-    float: right;
-}
-
-    .View_BtnC:hover {
-        color: #ffffff;
-        background-color: #c70a49;
-        outline: 0;
-        border: 1px solid #808080;
-    }
-
-.View_BtnL {
-    border-radius: 5px;
-    margin: 30px auto 20px 5px;
-    display: block;
-    font-size: 15pt;
-    color: #ffffff;
-    background-color: #3c55e6;
-    outline: 0;
-    border: 1px solid #808080;
-    width: 15%;
-    height: 50px;
-    float: right;
-}
-
-    .View_BtnL:hover {
-        color: #ffffff;
-        background-color: #0019ad;
-        outline: 0;
-        border: 1px solid #808080;
-    }
-
-.View_BtnM {
     border-radius: 5px;
     margin: 10px auto 0 auto;
     display: block;
     font-size: 15pt;
     color: #ffffff;
-    background-color: #3c55e6;
+    background-color: #000000;
     outline: 0;
-    /*border: 1px solid #808080;*/
-    border: none;
+    border: 1px solid #808080;
     width: 10%;
     height: 50px;
     float: right;
 }
-
-    .View_BtnM:hover {
-        color: #ffffff;
-        background-color: #0019ad;
-        outline: 0;
-        border: 1px solid #808080;
-    }
-
-.View_BtnD {
-    border-radius: 5px;
-    margin: 10px 20px 0 5px;
-    display: block;
-    font-size: 15pt;
-    color: #ffffff;
-    background-color: red;
-    outline: 0;
-    /*border: 1px solid #808080;*/
-    border: none;
-    width: 10%;
-    height: 50px;
-    float: right;
-}
-
-    .View_BtnD:hover {
-        color: #ffffff;
-        background-color: #c70a49;
-        outline: 0;
-        border: 1px solid #808080;
-    }
 
 .sell_button_cancle {
     border-radius: 5px;
@@ -412,35 +313,16 @@ MainContainer {
     }
 
 .label_text {
-    font-size: 15pt;
+    font-size: 18pt;
     float: left;
-    width: 60%;
-    color: #000;
+    width: 10%;
+    color: red;
 }
-
-.content_text {
-    font-size: 15pt;
-    float: left;
-    color: #343a40;
-    align-content: center;
-}
-
-.column_text{
-    background-color:#f2f2f2;
-}
-
 
 .title_textbox {
     width: 60%;
-    font-size: 15pt;
-    border: none;
-    /*border: 1px solid red;*/
-}
-
-.title_mtextbox {
-    width: 60%;
-    font-size: 15pt;
-    border: 1px solid blue;
+    font-size: 18pt;
+    border: 1px solid red;
 }
 
 #request_table {
@@ -461,17 +343,19 @@ MainContainer {
     width:100%;
 }
 
-/*.sell_left{
-    background-color: yellow;
-}*/
-
-.sell_right {
-    background-color: #cfcacc;
+#modify_content{
+    border: 1px solid blue;
+    margin: 5px auto;
 }
 
-/*.sell_tag_left {
-    background-color: violet;
-}*/
+/*====================ø‰√ª∞‘Ω√∆«====================*/
+#req_View_Container {
+    width: 80%;
+    height: 1450px;
+    vertical-align: middle;
+    /*border: 2px double #6c757d;*/
+    padding: 30px 30px 30px 30px;
+}
 
 .text_requestform {
     margin: 0px auto auto 10px;
@@ -479,10 +363,220 @@ MainContainer {
     font-weight: bold;
 }
 
-#modify_content{
-    border: 1px solid blue;
-    margin: 5px auto;
+.column_text {
+    background-color: #f2f2f2;
 }
+
+/*.sell_left{
+    background-color: yellow;
+}*/
+
+.request_right {
+    background-color: #cfcacc;
+}
+
+
+/*.sell_tag_left {
+    background-color: violet;
+}*/
+
+.request_button_cancle {
+    border-radius: 5px;
+    /*margin: 0px auto 0 10px;*/
+    margin: 0px 370px 0 10px;
+    display: block;
+    font-size: 13pt;
+    color: #000;
+    background-color: #dedcdc;
+    outline: 0;
+    border: 1px solid #808080;
+    width: 15%;
+    height: 50px;
+    float: right;
+}
+
+    .request_button_cancle:hover {
+        color: #000;
+        background-color: #c9c7c7;
+        outline: 0;
+        border: 1px solid #808080;
+    }
+
+.request_button_apply {
+    border-radius: 5px;
+    /*margin: 0px auto 0 5px;*/
+    margin: 0px 5px 0 10px;
+    display: block;
+    font-size: 13pt;
+    color: #0000ff;
+    background-color: #fff;
+    outline: 0;
+    border: 1px solid #808080;
+    width: 15%;
+    height: 50px;
+    float: right;
+}
+
+    .request_button_apply:hover {
+        color: #0000ff;
+        background-color: #f2f2f2;
+        outline: 0;
+        border: 1px solid #808080;
+    }
+
+.View_BtnD {
+    border-radius: 5px;
+    margin: 10px 20px 0 5px;
+    display: block;
+    font-size: 15pt;
+    color: #ffffff;
+    background-color: red;
+    outline: 0;
+    /*border: 1px solid #808080;*/
+    border: none;
+    width: 10%;
+    height: 50px;
+    float: right;
+}
+
+    .View_BtnD:hover {
+        color: #ffffff;
+        background-color: #c70a49;
+        outline: 0;
+        border: 1px solid #808080;
+    }
+
+.View_BtnM {
+    border-radius: 5px;
+    margin: 10px auto 0 auto;
+    display: block;
+    font-size: 15pt;
+    color: #ffffff;
+    background-color: #3c55e6;
+    outline: 0;
+    /*border: 1px solid #808080;*/
+    border: none;
+    width: 10%;
+    height: 50px;
+    float: right;
+}
+
+    .View_BtnM:hover {
+        color: #ffffff;
+        background-color: #0019ad;
+        outline: 0;
+        border: 1px solid #808080;
+    }
+
+.View_BtnL {
+    border-radius: 5px;
+    margin: 30px auto 20px 5px;
+    display: block;
+    font-size: 15pt;
+    color: #ffffff;
+    background-color: #3c55e6;
+    outline: 0;
+    border: 1px solid #808080;
+    width: 15%;
+    height: 50px;
+    float: right;
+}
+
+    .View_BtnL:hover {
+        color: #ffffff;
+        background-color: #0019ad;
+        outline: 0;
+        border: 1px solid #808080;
+    }
+
+.View_BtnC {
+    border-radius: 5px;
+    margin: 15px 45px 0px 0px;
+    display: block;
+    font-size: 14pt;
+    color: #ffffff;
+    background-color: #ff0000;
+    outline: 0;
+    border: 1px solid #808080;
+    width: 15%;
+    height: 50px;
+    float: right;
+}
+
+    .View_BtnC:hover {
+        color: #ffffff;
+        background-color: #c70a49;
+        outline: 0;
+        border: 1px solid #808080;
+    }
+
+.request_label_text {
+    font-size: 15pt;
+    float: left;
+    width: 60%;
+    color: #000;
+}
+
+.request_title_textbox {
+    width: 60%;
+    font-size: 15pt;
+    border: none;
+    /*border: 1px solid red;*/
+}
+
+.content_text {
+    font-size: 15pt;
+    float: left;
+    color: #343a40;
+    align-content: center;
+}
+
+#View_Btn_loc_view {
+    float: right;
+    width: 100%;
+}
+
+.View_Btn_up {
+    border-radius: 5px;
+    margin: 15px 45px 0px 0px;
+    display: block;
+    font-size: 14pt;
+    color: #ffffff;
+    background-color: #3c55e6;
+    outline: 0;
+    border: 1px solid #808080;
+    width: 15%;
+    height: 50px;
+    float: right;
+}
+
+    .View_Btn_up:hover {
+        color: #ffffff;
+        background-color: #0019ad;
+        outline: 0;
+        border: 1px solid #808080;
+    }
+
+.req_section_search_textbox {
+    position: relative;
+    height: 35px;
+    font-size: 12pt;
+    border: 1px solid #808080;
+    width: 75%;
+}
+
+.title_mtextbox {
+    width: 60%;
+    font-size: 15pt;
+    border: 1px solid blue;
+}
+
+.title_mtextbox {
+    width: 60%;
+    font-size: 15pt;
+    border: 1px solid blue;
+}
+
 
 /*====================ƒ‹≈Ÿ√˜====================*/
 #box {

@@ -64,7 +64,7 @@
                         <asp:Label ID="Label2" runat="server" Text="사진 첨부" CssClass="sell_left"></asp:Label>
                    </asp:TableCell>
                    <asp:TableCell>
-                        <asp:FileUpload ID="ImageUpload" runat="server" CssClass="sell_right" Height="60%" />
+                        <asp:FileUpload ID="ImageUpload" runat="server" CssClass="request_right" Height="60%" />
                    </asp:TableCell>
                </asp:TableRow>
                
@@ -112,8 +112,8 @@
                 </asp:TableRow>
             <%--</fieldset>--%>
                 </asp:Table>
-            <asp:Button ID="Button1" runat="server" Text="취소" Height="50px" Width="100px" CssClass="sell_button_cancle" OnClick="Button1_Click" />
-            <asp:Button ID="Button2" runat="server" Text="확인" Height="50px" Width="100px" CssClass="sell_button_apply" OnClick="Button2_Click" />
+            <asp:Button ID="Button1" runat="server" Text="취소" Height="50px" Width="100px" CssClass="request_button_cancle" OnClick="Button1_Click" />
+            <asp:Button ID="Button2" runat="server" Text="확인" Height="50px" Width="100px" CssClass="request_button_apply" OnClick="Button2_Click" />
         </div>
 
     </div>

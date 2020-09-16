@@ -66,7 +66,7 @@
                 </asp:BoundField>
             </Columns>
             </asp:GridView>
-        <asp:Button ID="up_request" runat="server" Text="글 올리기" CssClass="View_Btn" OnClick="up_request_Click" />
+        <asp:Button ID="up_request" runat="server" Text="글 올리기" CssClass="View_Btn_up" OnClick="up_request_Click" />
         <%--검색창--%>
         <div id="search_div">
             <asp:DropDownList ID="search_object" runat="server" Height="56px" Width="20%">
@@ -74,7 +74,7 @@
                 <asp:ListItem Value="name">작성자</asp:ListItem>
                 <asp:ListItem Value="contents">내용</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox ID="SearchBox" runat="server" TextMode="SingleLine" placeholder="검색할 내용을 입력해주세요." CssClass="section_search_textbox" BorderWidth="0" Width="63%" Height="56px"></asp:TextBox>
+            <asp:TextBox ID="SearchBox" runat="server" TextMode="SingleLine" placeholder="검색할 내용을 입력해주세요." CssClass="req_section_search_textbox" BorderWidth="0" Width="63%" Height="56px"></asp:TextBox>
             <%-- <asp:ImageButton ID="ImageButton1" ImageUrl="icon/search.png" OnClick="Search_Click" Width="60px" Height="60px" runat="server" ImageAlign="AbsMiddle" /> --%>
                 <asp:Button CssClass="btn btn-primary" OnClick="Search_Click" Width="13%" Height="50px" Text="검색" runat="server" />
         </div>
