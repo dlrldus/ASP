@@ -25,8 +25,8 @@
             <tr>
                 <td style="width:50%;">
                     그 밖의 질문이 있나요?<br />
-                    <asp:Button runat="server" text="질문 글 작성" BorderStyle="Dotted" BorderWidth="4px" />
-                    <asp:ImageButton runat="server" ImageUrl="~/ASP_Project2/icon/question.png" ImageAlign="Middle" Width="50%" Height="170px" />
+                    <asp:Button runat="server" id="btnQnA" text="1대 1 문의" BorderStyle="Dotted" BorderWidth="4px" OnClick="btnQnA_Click" />
+                    <asp:ImageButton runat="server" ImageUrl="~/ASP_Project2/icon/question.png" ImageAlign="Middle" Width="50%" Height="170px" OnClick="btnQnA_Click" />
                 </td>
                 <td>
                     문제가 있는 사용자가 있나요?<br />

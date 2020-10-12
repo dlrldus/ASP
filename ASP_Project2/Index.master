@@ -90,6 +90,106 @@
                     <asp:HiddenField runat="server" ID="getid" />
                 </div>
                 
+                <div id="category" style="font-size:14pt;">
+                <div id="test_top">
+                    <img src="Images/cate.png" style="width: 100%; height: 80px;" />
+                </div>
+                <br />
+                    <ul>
+                         <li class="main_cat">
+		                 공학
+		            <ul class="sub_cat" style="display:none">
+		                 <li><span>건축</span></li>
+		                 <li><span>교통/운송</span></li>
+		                 <li><span>기계/금속</span></li>
+		                 <li><span>산업</span></li>
+		                 <li><span>소재/재료</span></li>
+		                 <li><span>전기/전자</span></li>
+		                 <li><span>정밀/에너지</span></li>
+		                 <li><span>컴퓨터/통신</span></li>
+		                 <li><span>토목/도시</span></li>
+		                 <li><span>화공</span></li>
+		                 <li><span>기타</span></li>	
+		            </ul>
+                         </li>
+                    </ul>
+                    <ul>
+                         <li class="main_cat">
+		                 인문
+		            <ul class="sub_cat" style="display:none">
+		                 <li><span>언어/문학</span></li>
+		                 <li><span>인문과학</span></li>	
+		            </ul>
+                         </li>
+                    </ul>
+                    <ul>
+                         <li class="main_cat">
+		                 교육
+		            <ul class="sub_cat" style="display:none">
+		                 <li><span>교육일반</span></li>
+		                 <li><span>유아교육</span></li>
+		                 <li><span>중등교육</span></li>
+		                 <li><span>초등교육</span></li>
+		                 <li><span>특수교육</span></li>	
+		            </ul>
+                         </li>
+                    </ul>
+                    <ul>
+                         <li class="main_cat">
+		                 사회
+		            <ul class="sub_cat" style="display:none">
+		                 <li><span>경영/경제</span></li>
+		                 <li><span>법률</span></li>
+		                 <li><span>사회과학</span></li>	
+		            </ul>
+                         </li>
+                    </ul>
+                    <ul>
+                         <li class="main_cat">
+		                 예체능
+		            <ul class="sub_cat" style="display:none">
+		                 <li><span>디자인</span></li>
+		                 <li><span>무용/체육</span></li>
+		                 <li><span>미술/조형</span></li>
+		                 <li><span>연극/영화</span></li>
+		                 <li><span>음악</span></li>
+		                 <li><span>응용예술</span></li>	
+		            </ul>
+                         </li>
+                    </ul>
+                    <ul>
+                         <li class="main_cat">
+		                 의학
+		            <ul class="sub_cat" style="display:none">
+		                 <li><span>간호</span></li>
+		                 <li><span>약학</span></li>
+		                 <li><span>의료</span></li>
+		                 <li><span>치료/보건</span></li>
+		            </ul>
+                         </li>
+                    </ul>
+                    <ul>
+                         <li class="main_cat">
+		                 자연
+		            <ul class="sub_cat" style="display:none">
+		                 <li><span>농림/수산</span></li>
+		                 <li><span>생물/화학/환경</span></li>
+		                 <li><span>생활과학</span></li>
+		                 <li><span>수학/물리/천문/지리</span></li>
+		            </ul>
+                         </li>
+                    </ul>
+            </div>
+            <script>
+                $(".main_cat").click(function () {
+                    if ($(this).find(".sub_cat").is(":visible")) {
+                        $(this).find(".sub_cat").slideUp();
+                    }
+                    else {
+                        $(this).find(".sub_cat").slideDown();
+                    }
+                })
+            </script>
 
             </div>
             <%--오른쪽 메인 부분 --%>
