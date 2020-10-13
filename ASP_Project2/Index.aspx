@@ -129,12 +129,12 @@
     <div class="row">
         <div class="col-4 py-4">
         <asp:AdRotator ID="AdRotator1" runat="server"
-            AdvertisementFile="~/ASP_Project2/Xml/popupzone.xml" Width="90%"/>
+            AdvertisementFile="Xml/popupzone.xml" Width="90%"/>
         </div>
 
         <div class="col-8 py-4">
             <asp:AdRotator ID="AdRotator2" runat="server" 
-            AdvertisementFile="~/ASP_Project2/Xml/AdRotator.xml" Width="100%" Height="100%"/>
+            AdvertisementFile="Xml/AdRotator.xml" Width="100%" Height="100%"/>
         </div>
        
     </div>
