@@ -41,11 +41,14 @@ public partial class ASP_Project2_Default : System.Web.UI.Page
                 title.Text = reader["title"].ToString();
                 Contents.Text = reader["contents"].ToString();
                 imageout.ImageUrl = savePath + reader["image"].ToString();
+                category_f.Text = reader["Category_f"].ToString();
+                category_s.Text = reader["Category_s"].ToString();
             }
             reader.Close();
             connection.Close();
         }
     }
+    // 판매게시판 수정 기능
     protected void Update_Btn(object sender, EventArgs e)
     {
         //파일 업로드 구문 시작
@@ -58,7 +61,7 @@ public partial class ASP_Project2_Default : System.Web.UI.Page
             ImageUpload.SaveAs(savePath);            // 설정한 지역변수값 등록
         }
         //파일 업로드 구문 끝
-        MySqlConnection connection = new MySqlConnection("Server=ec2-13-125-252-165.ap-northeast-2.compute.amazonaws.com;Database=2020Project;Uid=root;Pwd=qwer1234;");
+        MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["mariadb"].ConnectionString);
         connection.Open();
         string UpdateQuery = "Update sellpost set title = @title , contents = @contents , image = @image where num = " + Request["No"];
 

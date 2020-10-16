@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 //using System.Linq;
 using System.Web;
@@ -14,7 +15,7 @@ public partial class request : System.Web.UI.Page
         nickname.Text = Session["Nickname"].ToString();
         email.Text = Session["email"].ToString();
     }
-
+    // 게시글 별 지역코드 삽입을 위한 구문
     protected void Button2_Click(object sender, EventArgs e)
     {
         if (Sel_location.SelectedIndex == 1)
@@ -112,7 +113,7 @@ public partial class request : System.Web.UI.Page
         }
         else
         {
-            MySqlConnection connection = new MySqlConnection("Server=ec2-13-125-252-165.ap-northeast-2.compute.amazonaws.com;Database=2020Project;Uid=root;Pwd=qwer1234;");
+            MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["mariadb"].ConnectionString);
             connection.Open();
             string InsertQuery = "Insert Into requestpost (name,email,title,contents,writedate,readcount,image,gopublic,location,loccode,price) Values(@name,@email,@title,@contents,@writedate,0,@image,@gopublic,@location,@loccode,@price)";
             MySqlCommand cmd = new MySqlCommand(InsertQuery, connection);

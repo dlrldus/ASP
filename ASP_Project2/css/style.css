@@ -2,8 +2,8 @@
 
 .mi-slider {
 	position: relative;
-	margin-top: 30px;
-	height: 490px;
+	margin-top: 5px;
+	height: 430px;
 }
 
 .mi-slider ul {
@@ -59,6 +59,7 @@
 .mi-slider ul li img {
 	max-width: 100%;
 	border: none;
+	width : 100%;
 }
 
 .mi-slider ul li h4 {
@@ -76,7 +77,7 @@
 
 .mi-slider nav {
 	position: relative;
-	top: 400px;
+	top: 300px;
 	text-align: center;
 	max-width: 800px;
 	margin: 0 auto;
@@ -94,6 +95,7 @@
 	padding: 40px 30px 30px 34px;
 	position: relative;
 	color: #888;
+	font-size : 15pt;
 	outline: none;
 	-webkit-transition: color 0.2s linear;
 	transition: color 0.2s linear;
@@ -291,6 +293,7 @@
 	.mi-slider nav a {
 		font-size: 12px;
 		padding: 40px 10px 30px 14px;
+		
 	}
 }
 
@@ -314,6 +317,7 @@
 		display: inline;
 		bottom: auto;
 		pointer-events: auto;
+
 	}
 
 	.mi-slider ul li {

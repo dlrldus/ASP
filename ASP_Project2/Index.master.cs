@@ -13,10 +13,10 @@ public partial class Site : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        siteinfo.ForeColor = System.Drawing.Color.White;
-        terms.ForeColor = System.Drawing.Color.White;
-        privacy.ForeColor = System.Drawing.Color.White;
-        serviceCenter.ForeColor = System.Drawing.Color.White;
+        //siteinfo.ForeColor = System.Drawing.Color.White;
+        //terms.ForeColor = System.Drawing.Color.White;
+        //privacy.ForeColor = System.Drawing.Color.White;
+        //serviceCenter.ForeColor = System.Drawing.Color.White;
 
         Login_PWD.Attributes["onkeyPress"] = "if (event.keyCode==13){" +
                  Page.GetPostBackEventReference(Btn_Log) + "; return false;}";
@@ -82,7 +82,7 @@ public partial class Site : System.Web.UI.MasterPage
 
             if (Session["Nickname"].ToString() != null) // 세션값이 존재한다면. 
             {
-                before_login.Style.Add("display", "none");  // 로그인 이전
+                before_login.Style.Add("display", "none");    // 로그인 이전
                 after_login.Style.Add("display", "block");    // 로그인 이후
                 Nickname.Text = Session["Nickname"].ToString() + "님 반갑습니다."; // 세션 ( 닉네임 ) + 문자열 출력
             }
@@ -126,25 +126,39 @@ public partial class Site : System.Web.UI.MasterPage
         before_login.Style.Add("display", "block");  // 로그인 이전
         after_login.Style.Add("display", "none");    // 로그인 이후
         Nickname.Text = "";                          // 닉네임 라벨 초기화
-        Response.Redirect("Index.aspx");              // 메인페이지 리로드
+        Response.Redirect("Index.aspx");             // 메인페이지 리로드
     }
 
-
+    // 관리자 페이지 이동버튼
     protected void Btn_Admin_Click(object sender, EventArgs e) // 회원관리 버튼 클릭시
     {
         ContentPlaceHolder MainContent = FindControl("MainContent") as ContentPlaceHolder;
         Server.Transfer("admin_useradmin.aspx");
-    }
+    }   
+    // 마이페이지 이동
     protected void Btn_Mypage_Click(object sender, EventArgs e)
     {
         ContentPlaceHolder MainContent = FindControl("MainContent") as ContentPlaceHolder;
-        Server.Transfer("mypage_main.aspx");
+        Server.Transfer("user_mypage_main.aspx");
     }
 
-
+    // 각 버튼별 페이지 이동구문
     protected void note_btn(object sender, ImageClickEventArgs e)
         {
-        Response.Redirect("~/ASP_Project2/mypage_Note.aspx");
+        Response.Redirect("~/ASP_Project2/user_mypage_Note.aspx");
         }
+    protected void notice_btn(object sender, ImageClickEventArgs e)
+        {
+        Response.Redirect("~/ASP_Project2/notice_Board.aspx");
+        }   
+    protected void cart_btn(object sender, ImageClickEventArgs e)
+        {
+        Response.Redirect("~/ASP_Project2/user_cart.aspx");
+        }
+    protected void mylist_btn(object sender, ImageClickEventArgs e)
+        {
+        Response.Redirect("~/ASP_Project2/user_mylist.aspx");
+        }
+
     }
 

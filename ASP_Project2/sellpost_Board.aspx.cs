@@ -12,24 +12,25 @@ using System.Drawing;
 
 public partial class ASP_Project2_Default : System.Web.UI.Page
     {
-    //public int intMax = 0;
-
+    //페이지 인덱스 변수
+    int intStart;
     protected void Page_Load(object sender, EventArgs e)
         {
         if (!Page.IsPostBack)
             {
+            ViewState["Start"] = 0; // 페이지 인덱스 0
             Bind();
             }
         search_object.BorderWidth = 0;
-        SearchBox.Attributes["onkeyPress"] = "if (event.keyCode==13){" +
-                Page.GetPostBackEventReference(ImageButton1) + "; return false;}";
+        // 엔터키 입력
+        SearchBox.Attributes["onkeyPress"] = "if (event.keyCode==13){" + Page.GetPostBackEventReference(ImageButton1) + "; return false;}";
         }
     //protected void sellpost_PageIndexChanging(object sender, GridViewPageEventArgs e)
     //    {
     //    sellpost.PageIndex = e.NewPageIndex;
     //    Bind();
     //    }
-    public void Bind()
+    public void Bind() // 데이터 바인딩
         {
         try
             {
@@ -37,10 +38,15 @@ public partial class ASP_Project2_Default : System.Web.UI.Page
             MySqlCommand cmd = new MySqlCommand();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             DataSet ds = new DataSet();
+            PagedDataSource adsource = new PagedDataSource(); ;
             cmd.Connection = conn;
             cmd.CommandText = "select * from sellpost order by num desc";
             conn.Open();
-            da.Fill(ds, "sellpost");
+            /* 페이징 구문 */
+            intStart = (int)ViewState["Start"];
+            ViewState["pageSize"] = 10;
+            da.Fill(ds, intStart, (int)ViewState["pageSize"], "sellpost");
+            /* 페이징 구문 */
             conn.Close();
             sellpost.DataSource = ds.Tables[0].DefaultView;
             DataBind();
@@ -50,6 +56,30 @@ public partial class ASP_Project2_Default : System.Web.UI.Page
             Response.Write(ex.Message.ToString());
             }
         }
+    /* 이전페이지 구문 */
+    protected void lnkPrevious_Click(object sender, System.EventArgs e)
+        {
+        intStart = (int)ViewState["Start"] - (int)ViewState["pageSize"]; 
+        ViewState["Start"] = intStart;
+        if (intStart <= 0)
+            {
+            ViewState["Start"] = 0;
+            }
+        Bind();
+        }
+    /* 다음페이지 구문 */
+    protected void lnkNext_Click(object sender, System.EventArgs e)
+        {
+        int dlistcount = sellpost.Items.Count;
+        intStart = (int)ViewState["Start"] + (int)ViewState["pageSize"];
+        ViewState["Start"] = intStart;
+        if (dlistcount < (int)ViewState["pageSize"])
+            {
+            ViewState["Start"] = (int)ViewState["Start"] - (int)ViewState["pageSize"];
+            }
+        Bind();
+        }
+    // 검색기능
     protected void Search_Click(object sender, EventArgs e)
         {
         MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["mariadb"].ConnectionString);
@@ -57,7 +87,7 @@ public partial class ASP_Project2_Default : System.Web.UI.Page
         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
         DataSet ds = new DataSet();
         cmd.Connection = conn;
-        cmd.CommandText = "select num,name,title,contents,email,image,price from sellpost where " + search_object.SelectedValue + " Like '%" + SearchBox.Text + "%' ";
+        cmd.CommandText = "select num,name,title,contents,email,image,price,status,pay_code,writedate from sellpost where " + search_object.SelectedValue + " Like '%" + SearchBox.Text + "%' ";
         conn.Open();
         da.Fill(ds, "sellpost");
         conn.Close();

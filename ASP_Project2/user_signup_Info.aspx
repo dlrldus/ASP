@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -118,14 +119,22 @@
                                     </p>
 
                                     <asp:Label runat="server" Text="주소" CssClass="form_left"></asp:Label>
-                                    <asp:TextBox ID="sample5_address" runat="server" CssClass="form_right" Width="300px"></asp:TextBox><input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+                                    <asp:TextBox ID="sample5_address" runat="server" CssClass="form_right" Width="300px"></asp:TextBox><input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br><br />
+
+                                    <input type="hidden" id="dnleh" runat="server" style="width: 32px" value="0"/> <%--위도저장--%>
+                                    <input type="hidden" id="rudeh" runat="server" style="width: 32px" value="0" /> <%--경도저장--%>
+
+                                    <asp:HiddenField runat="server" ID="dnlehhid" /> <%--위도저장--%>
+                                    <asp:HiddenField runat="server" ID="rudehhid" /> <%--경도저장--%>
+                                    
                                     <asp:Label runat="server" CssClass="form_left"></asp:Label>
-                                    <asp:TextBox runat="server" ID="TextBox1" Placeholder="상세주소" CssClass="form_right_t" Width="300px"></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="TextBox1" Placeholder="상세주소" CssClass="form_right" Width="300px"></asp:TextBox>
                                     <%--                            <input type="text" id="sample5_address" placeholder="주소" style="width:400px;">   --%>
 
                                     <br />
                                     <br />
-                                    <asp:Label runat="server" CssClass="form_left"></asp:Label><div id="map" style="width: 300px; height: 300px; display: none; border: 3px double gray;"></div>
+                                    <asp:Label runat="server" CssClass="form_left"></asp:Label>
+                                    <div id="map" style="width:300px;height:300px; display: none; border: 3px double gray;"></div>
 
                                     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
                                     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f2a1968ce4ee78a9831f6371384e8644&libraries=services"></script>
@@ -163,17 +172,35 @@
 
                                                             // 해당 주소에 대한 좌표를 받아서
                                                             var coords = new daum.maps.LatLng(result.y, result.x);
+                                                            
                                                             // 지도를 보여준다.
                                                             mapContainer.style.display = "block";
                                                             map.relayout();
                                                             // 지도 중심을 변경한다.
                                                             map.setCenter(coords);
+                                                            getInfo();            // 위도경도 저장을위한 함수
                                                             // 마커를 결과값으로 받은 위치로 옮긴다.
                                                             marker.setPosition(coords)
+                                                            
                                                         }
                                                     });
                                                 }
                                             }).open();
+                                            setZoomable(false);   // 지도 확대축소 막기
+                                            
+                                        }
+                                        function setZoomable(zoomable) {
+                                            // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
+                                            map.setZoomable(false);
+                                        }
+                                        function getInfo() {
+                                            // 지도의 현재 중심좌표를 얻어옵니다 
+                                            var center = map.getCenter();
+
+                                            var getX = center.getLat();
+                                            var getY = center.getLng();
+                                            document.getElementById("<%= dnleh.ClientID %>").value = getX;
+                                            document.getElementById("<%= rudeh.ClientID %>").value = getY;
                                         }
                                     </script>
 
@@ -194,19 +221,19 @@
                                         <asp:ListItem>daum.net</asp:ListItem>
                                         <asp:ListItem>google.co.kr</asp:ListItem>
                                     </asp:DropDownList>
-                                                       </ContentTemplate>
+                                </ContentTemplate>
                             </asp:UpdatePanel>
                             <asp:Label runat="server" Text="" CssClass="form_left"></asp:Label>
-                                    <asp:Button ID="find_info_B" runat="server" Text="인증번호 전송" OnClick="Find_info" /><br />
-                                    <asp:TextBox ID="check_code_T" runat="server" placeholder="인증번호 입력" MaxLength="20" Visible="false"></asp:TextBox>
-                                    <asp:Button ID="check_code_B" runat="server" Text="인증번호 확인" Visible="false" OnClick="Insert_CheCode" />
-                                    <asp:HiddenField runat="server" ID="checkV" Value="0"/>
-                                    <asp:HiddenField runat="server" ID="sum_email" />
+                            <asp:Button ID="find_info_B" runat="server" Text="인증번호 전송" OnClick="Find_info" /><br />
+                            <asp:TextBox ID="check_code_T" runat="server" placeholder="인증번호 입력" MaxLength="20" Visible="false"></asp:TextBox>
+                            <asp:Button ID="check_code_B" runat="server" Text="인증번호 확인" Visible="false" OnClick="Insert_CheCode" />
+                            <asp:HiddenField runat="server" ID="checkV" Value="0" />
+                            <asp:HiddenField runat="server" ID="sum_email" />
 
-                                    <p>
-                                        <hr />
-                                    </p>
-             
+                            <p>
+                                <hr />
+                            </p>
+
                             <asp:Label runat="server" Text="학교" CssClass="form_left"></asp:Label>
                             <asp:TextBox ID="school" runat="server" CssClass="form_right" Width="130px" ReadOnly="true"></asp:TextBox>
                             <asp:DropDownList runat="server">

@@ -13,6 +13,7 @@ public partial class signup2 : System.Web.UI.Page
     {
     protected void Page_Load(object sender, EventArgs e)
         {
+        // 포스트백이 일어날경우 패스워드 텍스트박스에 입력된 텍스트를 임시저장
         string Password = pwd.Text;
         pwd.Attributes.Add("value", Password);
         string PasswordChe = pwdcheck.Text;
@@ -31,7 +32,7 @@ public partial class signup2 : System.Web.UI.Page
 
     protected void Btn_Click(object sender, EventArgs e)
         {
-        Response.Redirect("user_signup_success.aspx");
+        Response.Redirect("index.aspx");
         }
 
     private void DisplayDay(int maxDay)
@@ -105,28 +106,34 @@ public partial class signup2 : System.Web.UI.Page
 
     protected void Signup_Btn_click(object sender, EventArgs e)
         {
+        // 아이디 중복체크 X
         if (IDche_Va.Value == "0" && Niche_Va.Value == "1")
             {
             Response.Write("<script language='javascript'> alert('아이디 중복체크를 해주세요.');</script>");
             }
+        // 닉네임 중복체크 X
         else if (IDche_Va.Value == "1" && Niche_Va.Value == "0")
             {
             Response.Write("<script language='javascript'> alert('닉네임 중복체크를 해주세요.');</script>");
             }
+        // 둘다 체크했을 경우 회원정보 입력
         else if (IDche_Va.Value == "1" && Niche_Va.Value == "1")
             {
+            // 이메일 인증코드가 일치할 경우
             if (check_code_T.Text == checkV.Value.ToString())
                 {
                 birthyear.Value = lstYear.SelectedValue; birthmonth.Value = lstMonth.SelectedValue; birthday.Value = lstDay.SelectedValue;
                 phonesum.Text = phone1.Text + "-" + phone2.Text + "-" + phone3.Text;
                 birth.Value = birthyear.Value + "/" + birthmonth.Value + "/" + birthday.Value;
                 sum_email.Value = email.Text + "@" + domainText.Text;
-                MySqlConnection connection = new MySqlConnection("Server=ec2-13-125-252-165.ap-northeast-2.compute.amazonaws.com;Database=2020Project;Uid=root;Pwd=qwer1234;");
 
+                dnlehhid.Value = dnleh.Value.ToString();
+                rudehhid.Value = rudeh.Value.ToString();
 
+                MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["mariadb"].ConnectionString);
 
                 string InsertQuery = "Insert Into userinfo (id, password, nickname, name,birth,phone,address,email,school,major,latitude,longitude,super) " +
-                    "Values (@id, @pw, @nick, @name,@birth,@phonesum,@address,@email,0,0,0,0,'일반계정')";
+                    "Values (@id, @pw, @nick, @name,@birth,@phonesum,@address,@email,0,0,@latitude,@longitude,'일반계정')";
 
                 MySqlCommand cmd = new MySqlCommand(InsertQuery, connection);
                 cmd.Parameters.AddWithValue("@id", id.Text);
@@ -137,15 +144,18 @@ public partial class signup2 : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@phonesum", phonesum.Text);
                 cmd.Parameters.AddWithValue("@address", sample5_address.Text);
                 cmd.Parameters.AddWithValue("@email", sum_email.Value);
+                cmd.Parameters.AddWithValue("@latitude", dnlehhid.Value);
+                cmd.Parameters.AddWithValue("@longitude", rudehhid.Value);
 
                 connection.Open();
                 cmd.ExecuteNonQuery();
                 connection.Close();
                 Mail();
-                Response.Write("<script language='javascript'> alert('회원가입성공! 로그인해주세요.');location.href='Index.aspx';</script>");
+                Response.Write("<script language='javascript'> alert('회원가입성공!');location.href='user_signup_success.aspx';</script>");
                 }
             else
-                {
+                { 
+                // 이메일 인증코드를 진행하지 않음
                 Response.Write("<script language='javascript'> alert('이메일 인증을 진행해주세요.');</script>");
                 }
             }
@@ -154,9 +164,10 @@ public partial class signup2 : System.Web.UI.Page
             Response.Write("<script language='javascript'> alert('아이디 혹은 닉네임 항목중 중복체크확인 하지않은 항목이 있습니다.');</script>");
             }
         }
+    // 아이디 중복체크 버튼 누를시 중복이 아닐경우 히든필드 벨류 1로 설정
     protected void IDCheck_Click(object sender, EventArgs e)
         {
-        MySqlConnection connection = new MySqlConnection("Server=ec2-13-125-252-165.ap-northeast-2.compute.amazonaws.com;Database=2020Project;Uid=root;Pwd=qwer1234;");
+        MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["mariadb"].ConnectionString);
         string SelectQuery = "select count(*) from userinfo where id = @id";
         MySqlCommand Cmd = new MySqlCommand(SelectQuery, connection);
         Cmd.Parameters.AddWithValue("@id", id.Text);
@@ -176,10 +187,10 @@ public partial class signup2 : System.Web.UI.Page
             }
         IDCheck.Attributes.Add("onclick", "return false");
         }
-
+    // 닉네임 중복체크 버튼 누를시 중복이 아닐경우 히든필드 벨류 1로 설정
     protected void NickCheck_Click(object sender, EventArgs e)
         {
-        MySqlConnection connection = new MySqlConnection("Server=ec2-13-125-252-165.ap-northeast-2.compute.amazonaws.com;Database=2020Project;Uid=root;Pwd=qwer1234;");
+        MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["mariadb"].ConnectionString);
         string SelectQuery = "select count(*) from userinfo where nickname = @nickname";
         MySqlCommand Cmd = new MySqlCommand(SelectQuery, connection);
         Cmd.Parameters.AddWithValue("@nickname", nickname.Text);
@@ -198,6 +209,7 @@ public partial class signup2 : System.Web.UI.Page
             nickname.Text = "";
             }
         }
+    // 이메일 인증기능
     protected void Find_info(object sender, EventArgs e)
         {
         sum_email.Value = email.Text + "@" + domainText.Text;
@@ -218,6 +230,7 @@ public partial class signup2 : System.Web.UI.Page
             Response.Write("<script language='javascript'> alert('이메일을 입력해주세요!!!');</script>");
             }
         }
+    // 이메일 인증번호가 일치할 경우 인증완료
     protected void Insert_CheCode(object sender, EventArgs e)
         {
         if (check_code_T.Text == checkV.Value.ToString())
@@ -231,6 +244,7 @@ public partial class signup2 : System.Web.UI.Page
             Response.Write("<script language='javascript'> alert('인증번호가 일치하지 않습니다!');</script>");
             }
         }
+    // 이메일 인증을 위해 인증코드 전송 구문
     void Mail()
         {
         Random Rand = new Random((int)DateTime.Now.Ticks);
@@ -247,10 +261,13 @@ public partial class signup2 : System.Web.UI.Page
 
         message.Subject = "회원 가입 환영 안내";
         message.Body = "중헌책가입을 환영합니다 <br>" + "인증코드는 " + Iteration + " 입니다. <br>" + "회원가입창에 입력후 회원가입을 완료하세요.";
+        /* 이메일 전송시 이미지구문 */
+        // 이메일 전송쿼리중 에러가 발생하면 해당 구문지울것 ( 해당 위치에 동일한 이름의 파일이 존재하지않아서 생기는 문제 
         Attachment at = new Attachment(@"C:\inetpub\wwwroot\ASP_Project2\Images\slide2.png", MediaTypeNames.Image.Jpeg);
         at.ContentId = "ContentIDO";  //Attachment의 ContentID를 통해 메일 내용의 Img태그에서 접근 가능함
         message.Attachments.Add(at);
 
+        /* 이메일 전송시 이미지구문 */
         message.SubjectEncoding = System.Text.Encoding.UTF8;
         message.BodyEncoding = System.Text.Encoding.UTF8;
 
@@ -262,4 +279,6 @@ public partial class signup2 : System.Web.UI.Page
         client.Credentials = new System.Net.NetworkCredential("dlrldus0917@naver.com", "rlaxogjs09");
         client.Send(message);
         }
+
+
     }

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Data;
 
 public partial class ASP_Project2_Default : System.Web.UI.Page
 {
@@ -45,23 +46,49 @@ public partial class ASP_Project2_Default : System.Web.UI.Page
             }
             reader.Close();
             connection.Close();
-        }
+            string CommandText = "select * from reply where postloc='request' and postnumber = " + Request["No"];   //댓글값이 게시글 번호와 포스트 넘버가 일치하게 맞춘뒤 가져오는구문
+
+            Bind(CommandText);
+            }
     }
+    // 댓글 바인딩
+    public void Bind(string CommandTxt)
+        {
+        try
+            {
+            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["mariadb"].ConnectionString);
+            MySqlCommand cmd = new MySqlCommand();
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            cmd.Connection = conn;
+            cmd.CommandText = CommandTxt;
+            conn.Open();
+            da.Fill(ds, "reply");
+            conn.Close();
+            reply_grid.DataSource = ds.Tables[0].DefaultView;
+            DataBind();
+            }
+        catch (Exception ex)
+            {
+            Response.Write(ex.Message.ToString());
+            }
+        }
+    // 댓글입력 기능
     protected void View_Recom_Btn(object sender, EventArgs e)
     {
         MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["mariadb"].ConnectionString);
         string getNumber = Request["No"];
-        post_num.Value = getNumber;
+        post_num.Value = getNumber; // 게시글 번호를 히든필드에 저장 ( 데이터베이스에 삽입을 위함)
 
-        string InsertQuery = "Insert Into reply (nickname,comment,writedate,postnumber) Values ( @nickname, @comment,@writedate,@postnumber)";
+        string InsertQuery = "Insert Into reply (nickname,comment,writedate,postnumber,postloc) Values ( @nickname, @comment,@writedate,@postnumber,@postloc)";
         MySqlCommand command = new MySqlCommand(InsertQuery, connection);
         command.Parameters.AddWithValue("@nickname", recommend_label.Text);
         command.Parameters.AddWithValue("@comment", reply.Text);
         command.Parameters.AddWithValue("@writedate", DateTime.Now.ToShortDateString());
-        command.Parameters.AddWithValue("@postnumber", post_num.Value);
+        command.Parameters.AddWithValue("@postnumber", post_num.Value); // 게시글 번호 저장
+        command.Parameters.AddWithValue("@postloc", "request");         // 테이블에 게시판별 댓글을 구분하기 위한 컬럼/
         connection.Open();
         command.ExecuteNonQuery();
-
         connection.Close();
         Response.Write("<script type='text/javascript'>alert('댓글등록 성공'); </script>");  // 댓글등록 성공을 알림
         Response.Redirect(Request.Url.PathAndQuery);                                       // 페이지 새로고침

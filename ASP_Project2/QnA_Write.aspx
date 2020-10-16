@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="Index.master" AutoEventWireup="true" CodeFile="QnA_Write.aspx.cs" Inherits="QnA_Write" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ASP_Project2/Index.master" AutoEventWireup="true" CodeFile="QnA_Write.aspx.cs" Inherits="QnA_Write" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" Runat="Server">
 </asp:Content>
