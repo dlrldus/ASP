@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Advertisements>
-  <Ad>
-    <ImageUrl>~/ASP_Project2/Images/guide.png</ImageUrl>
-    <NavigateUrl>~/ASP_Project2/serviceCenter.aspx</NavigateUrl>
-    <AlternateText>naver</AlternateText>
-    <Impressions>50</Impressions>
-  </Ad>
-</Advertisements>
