@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+
+  <Ad>
+
+    <ImageUrl>Images/goods.png</ImageUrl>
+
+    <!--<NavigateUrl></NavigateUrl>-->
+
+    <AlternateText>중헌책굿즈</AlternateText>
+
+    <Keyword>중헌책굿즈</Keyword>
+
+    <Impressions>50</Impressions>
+
+  </Ad>
+
+  <Ad>
+
+    <ImageUrl>Images/slide2.png</ImageUrl>
+
+    <!--<NavigateUrl></NavigateUrl>-->
+
+    <AlternateText>중헌책굿즈2</AlternateText>
+
+    <Keyword>중헌책굿즈</Keyword>
+
+    <Impressions>50</Impressions>
+
+  </Ad>
+</Advertisements>

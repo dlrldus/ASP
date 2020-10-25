@@ -1,0 +1,132 @@
+button {
+    background: none;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.tab_menu_container {
+    display: flex;     
+}
+
+.tab_menu_btn {
+    flex: 1;
+    width: 180px;
+    height: 40px;
+    margin-top : 30px;
+    margin-bottom : 30px;
+    justify-content: space-between;
+    font-size : 22px;
+    font-family : Arial;
+    font-weight : bold;
+}
+
+    .tab_menu_btn.on {
+        border-bottom: 2px solid #a48b5e;
+        font-weight: 700;
+        color: #a48b5e;
+        outline: none;
+    }
+
+    .tab_menu_btn:hover {
+        color: #a48b5e;
+    }
+
+.tab_box {
+    display: none;
+    padding: 20px;
+}
+
+    .tab_box.on {
+        display: block;
+    }
+
+/*============================¸Þ´º==========================*/
+.product_list {
+    width: 100%;
+    margin-left: 23px;
+}
+
+    .product_list li {
+        float: left;
+        margin: 0 20px 20px 0;
+        position: relative;
+        width: 240px;
+        height: 351px;
+        border: 1px solid #d9d9d9;
+        margin-left: 30px;
+        font-size: 18px;
+        list-style-type: none;
+    }
+
+        .product_list li:hover {
+            border-color: #333;
+        }
+
+    .product_list dl {
+        padding: 220px 0 0 0;
+    }
+
+    .product_list dt {
+        padding: 11px 10px 14px;
+        border-top: 1px solid #f0f0f0;
+    }
+
+        .product_list dt a {
+            font-size: 16px;
+            color: #1a1a1a;
+        }
+
+    /*.product_list .img {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        max-width: 100%;
+        height: auto;
+    }*/
+
+.goods_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 22px;
+    margin-top : 15px;
+    width: 80%;
+    height: auto;
+}
+
+.product_list .price {
+    padding: 0 0 0 10px;
+    font-size: 21px;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+    /*.product_list .btm {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid #f0f0f0;
+        background: #fafafa;
+    }
+
+        .product_list .btm div {
+            float: left;
+            width: 50%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #767676;
+        }
+
+            .product_list .btm div a {
+                font-size: 12px;
+                color: #767676;
+            }
+
+                .product_list .btm div a img {
+                    padding: 0 4px 0 0;
+                }*/

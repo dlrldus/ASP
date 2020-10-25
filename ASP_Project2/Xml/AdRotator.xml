@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <ImageUrl>~/ASP_Project2/Images/adrotator1.png</ImageUrl>
+    <NavigateUrl>~/ASP_Project2/iob_GOODS.aspx</NavigateUrl>
+    <AlternateText>naver</AlternateText>
+    <Impressions>50</Impressions>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>~/ASP_Project2/Images/adrotator2.png</ImageUrl>
+    <NavigateUrl>~/ASP_Project2/iob_GOODS.aspx</NavigateUrl>
+    <AlternateText>naver</AlternateText>
+    <Impressions>50</Impressions>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>~/ASP_Project2/Images/adrotator3.png</ImageUrl>
+    <NavigateUrl>~/ASP_Project2/iob_GOODS.aspx</NavigateUrl>
+    <AlternateText>naver</AlternateText>
+    <Impressions>50</Impressions>
+  </Ad>
+</Advertisements>
